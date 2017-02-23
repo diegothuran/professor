@@ -44,6 +44,10 @@ class Article(models.Model):
     views = models.PositiveIntegerField(default=0)
     likes = models.PositiveIntegerField(default=0)
     topped = models.BooleanField(default=False)
+    document = models.FileField(upload_to='documents/', verbose_name='Arquivo', blank=True)
+    document_description = models.CharField(max_length=255, blank=True, verbose_name="Descriçao do Arquivo")
+    uploaded_at = models.DateTimeField(auto_now_add=True, verbose_name='Upado em')
+
 
     category = models.ForeignKey('Category', verbose_name='Categoria', null=True, on_delete=models.SET_NULL)
     tags = models.ManyToManyField('Tag', blank=True)
