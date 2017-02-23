@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render
 from django.http import HttpRequest
 from datetime import  datetime
-# Create your views here.
+from .models import Article, Category
 
 def indexView(request):
 
@@ -10,7 +12,7 @@ def indexView(request):
         request,
         'pessoal/index.html',
         {
-            'title': 'Home Page',
+            'title': 'Home',
             'year': datetime.now().year,
         }
     )
@@ -37,5 +39,22 @@ def contato(request):
         {
             'title': 'Contato',
             'year': datetime.now().year,
+        }
+    )
+
+def noticias(request):
+    assert isinstance(request, HttpRequest)
+    category = str(request.GET['category'])
+    posts = Article.objects.filter(category__name=category).order_by().reverse()
+    title = {"lp":"Laboratório de Programação", "ie": "Instrumentação para o Ensino",
+             "pds": "Precesso de Desenvolvimento de Software", "ieh": "Informática para o Ensino"}
+
+    return render(
+        request,
+        'pessoal/posts.html',
+        {
+            'title': title[category],
+            'year' : datetime.now().year,
+            'posts' : posts
         }
     )

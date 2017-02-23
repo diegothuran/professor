@@ -1,0 +1,7 @@
+{% extends 'pessoal/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+        <p>{{ post }}</p>
+    {% endfor%}
+{% endblock %}
