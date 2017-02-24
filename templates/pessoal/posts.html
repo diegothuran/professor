@@ -1,7 +1,30 @@
 {% extends 'pessoal/base.html' %}
 
 {% block content %}
-    {% for post in posts %}
-        <p>{{ post }}</p>
-    {% endfor%}
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            {% load paginate %}
+            {% paginate 5 posts %}
+            {% for article in posts %}
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-preview">
+                    <a href="{% url 'pessoal:post' article.pk %}">
+                        <h2 class="post-title">
+                            {{ article.title }}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{ article.abstract }}
+                        </h3>
+                    </a>
+                    <p class="post-meta">Publicado em {{ article.created_time }}</p>
+                </div>
+                </div>
+            {% endfor %}
+        <div class="pagination">
+            {% show_pageitems %}
+        </div>
+        </div>
+    </div>
+
 {% endblock %}

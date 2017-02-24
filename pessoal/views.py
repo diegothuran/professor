@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from datetime import  datetime
 from .models import Article, Category
+from django.views import generic
 
 def indexView(request):
 
@@ -58,3 +59,7 @@ def noticias(request):
             'posts' : posts
         }
     )
+
+class NoticiaDetailView(generic.DetailView):
+    model = Article
+    template_name = 'pessoal/posts.html'

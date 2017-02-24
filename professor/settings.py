@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'simple_pagination',
+    'markdown2',
+    'pygments',
     'pessoal',
 ]
 
