@@ -62,4 +62,4 @@ def noticias(request):
 
 class NoticiaDetailView(generic.DetailView):
     model = Article
-    template_name = 'pessoal/posts.html'
+    template_name = 'pessoal/notice.html'

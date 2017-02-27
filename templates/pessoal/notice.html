@@ -1,0 +1,23 @@
+{% extends 'pessoal/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="col-sm-4">
+                    <div class="panel panel-title">
+                        <h2>{{ article.title }}</h2>
+                    </div>
+                    <div class="panel panel-body">
+                        {{ article.body }}
+
+                        <p><a href="{{ article.document }}">trabalho</a></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include 'pessoal/comment.html' %}
+    </div>
+
+{% endblock %}

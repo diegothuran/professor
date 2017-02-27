@@ -1,12 +1,13 @@
 <div class="comment">
     <div class="comment-main">
         <p class="head">Detalhes do comentário:</p>
-        <form method="post" action="{% url 'noticia' article.pk %}">
+        <form method="post" action="{% url 'pessoal:post' article.pk %}">
             {% csrf_token %}
             <div class="row">
                 {% for field in form %}
                     {{ field }}
                     {{ field.errors }}
+
                     <br>
                 {% endfor %}
             </div>
